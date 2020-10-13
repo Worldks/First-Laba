@@ -1,7 +1,8 @@
-package com.company;
+package bsu.rfe.java.group10.lab1.Charnetskyvladymir.varC1;
 
-public abstract class Food implements Consumable {
+public abstract class Food implements Consumable, Nutritious  {
     String name = null;
+
     public Food(String name) {
         this.name = name;
     }
@@ -19,6 +20,4 @@ public abstract class Food implements Consumable {
     public void setName(String name) {
         this.name = name;
     }
-// Реализация метода consume() удалена из базового класса Food
-// Это можно сделать, потому что сам Food - абстрактный
 }
