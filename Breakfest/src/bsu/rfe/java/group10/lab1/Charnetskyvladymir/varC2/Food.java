@@ -1,11 +1,9 @@
-package bsu.rfe.java.group10.lab1.Charnetskyvladymir.varC1;
+package bsu.rfe.java.group10.lab1.Charnetskyvladymir.varC2;
 
 public abstract class Food implements Consumable, Nutritious  {
     String name = null;
 
-    public Food(String name) {
-        this.name = name;
-    }
+    public Food(String name) { this.name = name; }
     public boolean equals(Object arg0) {
         if (!(arg0 instanceof Food)) return false;
         if (name==null || ((Food)arg0).name==null) return false; // Шаг 2
@@ -20,4 +18,5 @@ public abstract class Food implements Consumable, Nutritious  {
     public void setName(String name) {
         this.name = name;
     }
+
 }

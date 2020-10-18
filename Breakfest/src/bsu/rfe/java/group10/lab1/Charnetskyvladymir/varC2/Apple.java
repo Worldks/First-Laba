@@ -1,8 +1,9 @@
-package bsu.rfe.java.group10.lab1.Charnetskyvladymir.varC1;
+package bsu.rfe.java.group10.lab1.Charnetskyvladymir.varC2;
 
 public class Apple extends Food {
 
-    private String size;
+    private String size = null ;
+    private Double calories = null;
 
     public Apple(String size) {
         super("Яблоко");
@@ -11,10 +12,6 @@ public class Apple extends Food {
 
     public void consume() {
         System.out.println(this + " съедено");
-    }
-
-    public Double calculateCalories{
-
     }
 
     public String getSize() {
@@ -36,4 +33,17 @@ public class Apple extends Food {
     public String toString() {
         return super.toString() + " размера '" + size.toUpperCase() + "'";
     }
+
+    public Double calculateCalories(){
+        if(size.equals("Большое")) {
+            calories = 20.0;
+        }   else if (size.equals("Среднее")){
+            calories = 15.0;
+        } else if(size.equals("Мальнькое")){
+            calories = 10.0;
+        }
+        return calories;
+    }
+
+
 }

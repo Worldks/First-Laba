@@ -1,39 +1,50 @@
-package bsu.rfe.java.group10.lab1.Charnetskyvladymir.varC1;
+package bsu.rfe.java.group10.lab1.Charnetskyvladymir.varC2;
 
 public class Cocktail extends Food{
-    private String Filling_1;
-    private String Filling_2;
+    private String drink = null;
+    private String fruit = null;
+    private Double calories = null;
 
 
-    public Cocktail(String Filling_1, String Filling_2){
+    public Cocktail(String drink, String fruit){
         super ("Коктейль");
-        this.Filling_1 = Filling_1;
-        this.Filling_2 = Filling_2;
+        this.drink = drink;
+        this.fruit = fruit;
     }
 
     public void consume(){
-        System.out.println(this + " напиток " + this.Filling_1 +" с фруктом " + this.Filling_2 + " выпит ");
+        System.out.println(this + " напиток " + this.drink +" с фруктом " + this.fruit + " выпит ");
     }
 
     public String getFillings(){
-       //System.out.println(Filling_1 + " " + Filling_2);
-        return (Filling_1 + " и " + Filling_2);  // Так можно делать ?
+        return (drink + " и " + fruit);  // Так можно делать ?
     }
 
-    public void setFillings(String Filling_1, String Filling_2){
-        this.Filling_1 = Filling_1;
-        this.Filling_2 = Filling_2;
+    public void setFillings(String drink, String fruit){
+        this.drink = drink;
+        this.fruit = fruit;
     }
 
     public boolean equals(Object arg0) {
         if (super.equals(arg0)) {
             if (!(arg0 instanceof Cocktail)) return false;
-            return (Filling_1.equals(((Cocktail)arg0).Filling_1) && Filling_2.equals(((Cocktail)arg0).Filling_2) ); // Один & или && Ответ получен
+            return (drink.equals(((Cocktail)arg0).drink) && fruit.equals(((Cocktail)arg0).fruit) ); // Один & или && Ответ получен
         } else
             return false;
     }
 
     public String toString() {
-        return super.toString() + " напиток " + this.Filling_1 + " с фруктом " + this.Filling_1;
+        return super.toString() + " напиток " + this.drink + " с фруктом " + this.drink;
     }
+
+    public Double calculateCalories(){
+        if(drink.equals("Молочный") && fruit.equals("Клубникой")){
+            calories = 7.0 + 3.0;
+        } else if (drink.equals("Шоколадный") && fruit.equals("Карамелью")){
+            calories = 9.0 + 4.0;
+        } else if (drink.equals("Тэкила") && fruit.equals("Солью")){
+            calories = 9.0 + 4.0;
+        }
+        return calories;
+}
 }
