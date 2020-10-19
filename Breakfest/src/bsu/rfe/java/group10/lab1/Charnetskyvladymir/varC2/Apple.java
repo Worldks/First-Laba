@@ -39,7 +39,7 @@ public class Apple extends Food {
             calories = 20.0;
         }   else if (size.equals("Среднее")){
             calories = 15.0;
-        } else if(size.equals("Мальнькое")){
+        } else if(size.equals("Маленькое")){
             calories = 10.0;
         }
         return calories;

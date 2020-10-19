@@ -13,7 +13,7 @@ public class Cocktail extends Food{
     }
 
     public void consume(){
-        System.out.println(this + " напиток " + this.drink +" с фруктом " + this.fruit + " выпит ");
+        System.out.println(this  + " выпит ");
     }
 
     public String getFillings(){
@@ -34,7 +34,7 @@ public class Cocktail extends Food{
     }
 
     public String toString() {
-        return super.toString() + " напиток " + this.drink + " с фруктом " + this.drink;
+        return super.toString() +  " " +this.drink + " с " + this.fruit;
     }
 
     public Double calculateCalories(){

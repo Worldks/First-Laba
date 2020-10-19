@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Main {
-        //@SuppressWarnings("unchecked") //Почему он подчеркивает myClass.getConstructor если убрать подавление предупреждений т.е. о чем он меня пытается предупредить?
+        @SuppressWarnings("unchecked") //Почему он подчеркивает myClass.getConstructor если убрать подавление предупреждений т.е. о чем он меня пытается предупредить?
         public static void main(String[] args) throws Exception {
             Food[] breakfast = new Food[20];
             int itemsSoFar = 0;
@@ -44,38 +44,100 @@ public class Main {
                 } catch (NoSuchMethodException ex) {
                     System.out.println(arg + " не может быть включен в завтрак" + " " + ex);
                 }
+            }
 
-                System.out.println("Завтрак: "); //выводим завтрак таким,каким он был первоначально
+            Food j;
+            boolean chek = true;
+            int h = 0;
+            int [] a1 = new int [itemsSoFar];
+            for (int i = 0; i < itemsSoFar; i++){
+                a1[i] = 0;
+            }
+            int i = 0, c = 1;
+
+            j = breakfast[i];
+            for (int k = 0; k < itemsSoFar; k++){
+                if(breakfast[k].equals(j)){
+                    h++;        // Сколько раз встретился этот продукт
+                    a1[k] = c; // Первые позиции
+                    c++;
+                }
+            }
+            System.out.println(breakfast[i] + " встречается в завтраке " + h + "раз");
+            i++;
+            h = 0;
+
+            do{
+                for(int p = i; p < itemsSoFar; p++) {
+                    if (a1[p] != i && a1[p] == 0 ) {
+                        i = p; // Позиция нового не учтенного элемента
+                        break;
+                    } else {
+                        chek = false;
+                        continue;
+                    }
+                }
+                if(chek) {
+                    j = breakfast[i];
+                    for (int k = i; k < itemsSoFar; k++) {
+                        if (breakfast[k].equals(j)) {
+                            h++;
+                            a1[k] = c;
+                        }
+                    }
+                    System.out.println(breakfast[i] + " встречается в завтраке " + h + "раз");
+                    c++;
+                    h = 0;
+                }
+                i++;
+            }while( i < itemsSoFar);
+
+            System.out.println("Завтрак: "); //выводим завтрак таким,каким он был первоначально
+            for (Food item : breakfast) {
+                if (item != null) {
+                    item.consume();
+                    System.out.println(" " + item.calculateCalories());
+                } else {
+                    break;
+                }
+            }
+
+            if (case1) { //случай "ClassNotFoundException", когда мы задаем параметр -sort
+                Arrays.sort(breakfast, new Comparator() {
+                    public int compare(Object f1, Object f2) {
+                        if (f1 == null) return 1;
+                        if (f2 == null) return -1;
+
+                        if (((Food) f1).calculateCalories() > ((Food) f2).calculateCalories())
+                            return -1;
+                        else if (((Food) f1).calculateCalories() < ((Food) f2).calculateCalories()) return 1;
+                        else return 0;
+                    }
+                });
+
+                if (case2){
+                    Double ALL_Calories = 0.0;
+
+                    for (Food item : breakfast) {
+                        if (item != null) {
+                            ALL_Calories += item.calculateCalories();
+                        } else {
+                            break;
+                        }
+                    }
+                    System.out.println("Общее число калорий в завтраке " + ALL_Calories);
+                }
+
+                System.out.println("Завтрак:"); //ну тут понятно
                 for (Food item : breakfast) {
                     if (item != null) {
                         item.consume();
                         System.out.println(" " + item.calculateCalories());
                     } else {
+                        if(case1){
+                            System.out.println("Завтрак отсортирован");
+                        }
                         break;
-                    }
-                }
-
-                if (case1) { //случай "ClassNotFoundException", когда мы задаем параметр -sort
-                    Arrays.sort(breakfast, new Comparator() {
-                        public int compare(Object f1, Object f2) {
-                            if (f1 == null) return 1;
-                            if (f2 == null) return -1;
-
-                            if (((Food) f1).calculateCalories() > ((Food) f2).calculateCalories())
-                                return -1;
-                            else if (((Food) f1).calculateCalories() < ((Food) f2).calculateCalories()) return 1;
-                            else return 0;
-                        }
-                    });
-
-                    System.out.println("Завтрак:"); //ну тут понятно
-                    for (Food item : breakfast) {
-                        if (item != null) {
-                            item.consume();
-                            System.out.println(" " + item.calculateCalories());
-                        } else {
-                            break;
-                        }
                     }
                 }
             }
